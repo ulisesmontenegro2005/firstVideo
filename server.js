@@ -1,8 +1,10 @@
 import express from  'express';
 import compression from 'compression';
 import productsRouter from './src/router/productsRouter.js';
+import connect from './db/connection.js';
 import env from './config.js'
 const app = express();
+await connect();
 
 app.use(compression())
 app.use(express.json());

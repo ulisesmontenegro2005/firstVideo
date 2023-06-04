@@ -5,4 +5,8 @@ export default class productService {
     async getProducts(){
         return await daos.getProducts()
     }
+
+    async addProduct(product){
+        return await daos.addProduct(product)
+    }
 }
