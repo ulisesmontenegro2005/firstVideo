@@ -25,7 +25,7 @@ export default class daosClass {
     }
 
     async updateProduct(product){
-        await products.updateOne({"_id": product.id}, {"name": product.name, "description": product.description, "price": product.price, "stock": product.stock, "thumbnail": product.thumbnail});
+        await products.updateOne({"_id": product._id}, {"name": product.name, "description": product.description, "price": product.price, "stock": product.stock, "thumbnail": product.thumbnail});
         
         return product
     }

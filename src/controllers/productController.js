@@ -7,12 +7,15 @@ export default class productController {
         .then(prods => {
             return res.json(prods)
         })
+        .catch(err => {
+            return res.json({'error': err})
+        })
     }
 
     async getProductById(req, res){
-        const { id } = req.params;
+        const { _id } = req.params;
 
-        service.getProductById(id)
+        service.getProductById(_id)
         .then(prod => {
             return res.json(prod)
         })
@@ -23,20 +26,38 @@ export default class productController {
 
         const product = {name,description,price,stock,thumbnail}
 
-        return await res.json(service.addProduct(product))
+        service.addProduct(product)
+        .then(prod => {
+            return res.json(prod)
+        })
+        .catch(err => {
+            return res.json({'error': err})
+        })
     }
 
     async updateProduct(req, res){
-        const { id, name, description, price, stock, thumbnail } = req.body;
+        const { _id, name, description, price, stock, thumbnail } = req.body;
 
-        const product = {id,name,description,price,stock,thumbnail}
+        const product = {_id,name,description,price,stock,thumbnail}
 
-        res.json(service.updateProduct(product))
+        service.updateProduct(product)
+        .then(newProd => {
+            return res.json(newProd)
+        })
+        .catch(err => {
+            return res.json({'error': err})
+        })
     }
 
     async deleteProduct(req, res){
-        const { id } = req.body;
+        const { _id } = req.params;
 
-        res.json(service.deleteProduct(id))
+        service.deleteProduct(_id)
+        .then(deletedProd => {
+            return res.json(deletedProd)
+        })
+        .catch(err => {
+            return res.json({'error': err})
+        })
     }
 }
