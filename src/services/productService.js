@@ -6,7 +6,19 @@ export default class productService {
         return await daos.getProducts()
     }
 
+    async getProductById(id){
+        return await daos.getProductById(id)
+    }
+
     async addProduct(product){
         return await daos.addProduct(product)
+    }
+
+    async updateProduct(product){
+        return await daos.updateProduct(product)
+    }
+    
+    async deleteProduct(id){
+        return await daos.deleteProduct(id)
     }
 }
