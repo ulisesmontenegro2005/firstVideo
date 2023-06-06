@@ -36,7 +36,8 @@ export default class productController {
     }
 
     async updateProduct(req, res){
-        const { _id, name, description, price, stock, thumbnail } = req.body;
+        const { _id } = req.params;
+        const { name, description, price, stock, thumbnail } = req.body;
 
         const product = {_id,name,description,price,stock,thumbnail}
 
